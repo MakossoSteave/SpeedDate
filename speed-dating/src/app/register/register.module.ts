@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { RegisterComponent } from './register.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,7 +25,7 @@ const routes: Routes = [
   imports: [
     IonicModule,
     CommonModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule ,
     ExploreContainerComponentModule,
     RouterModule.forChild(routes)
   ],
