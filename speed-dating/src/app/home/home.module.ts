@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EditProfilComponent } from './edit-profil/edit-profil.component';
+import { MatchComponent } from './match/match.component';
 
 
 
@@ -24,11 +25,15 @@ const routes: Routes = [
         path: 'edit',
         component: EditProfilComponent
     },
+    {
+        path: 'match',
+        component: MatchComponent
+    },
 
 ];
 
 @NgModule({
-    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent],
+    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent,MatchComponent],
     imports: [
         IonicModule,
         CommonModule,

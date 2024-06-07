@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vos matchs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="text-3xl font-bold mb-4 text-center">Vos matchs</h1>
+  <p class="text-lg text-gray-600 mb-8 text-center">Voici les personnes avec qui vous avez matché.</p>
+
+  <ion-list lines="none">
+    <ion-item *ngFor="let match of matches" class="flex items-center space-x-4 mb-4 bg-white rounded-lg shadow-md p-4 hover:bg-gray-50 transition">
+      <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+        <img [src]="match.picture" alt="{{ match.name }}" class="w-full h-full object-cover">
+      </div>
+      <ion-label class="flex flex-col ml-4">
+        <span class="font-bold text-xl">{{ match.name }} </span>
+        <span class="text-gray-600"> {{ match.location }}</span>
+      </ion-label>
+      <ion-button (click)="openChat(match.id)" fill="clear" slot="end" class="ml-auto">
+        <ion-icon name="chatbubbles-outline" slot="icon-only" class="text-blue-500"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -19,4 +19,8 @@ export class HomeComponent  implements OnInit {
   redirectProfil(){
     this.router.navigate(['home/profil'])
   }
+  match(){
+    this.router.navigate(['home/match'])
+
+  }
 }
