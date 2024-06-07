@@ -5,11 +5,13 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h1 class="text-3xl font-bold mb-4">Bienvenue sur votre tableau de bord</h1>
-  <p class="text-lg mb-8">Ici, vous pouvez accéder à toutes les fonctionnalités de l'application.</p>
+  <div class="text-center">
+    <h1 class="text-3xl font-bold mb-4">Bienvenue sur votre tableau de bord</h1>
+    <p class="text-lg text-gray-600">Explorez toutes les fonctionnalités de l'application et restez connecté avec vos matchs.</p>
+  </div>
+  
 
-  <!-- Exemples de fonctionnalités -->
-  <ion-list lines="none">
+  <ion-list lines="none" class="mt-8">
     <ion-item routerLink="/profile" class="flex items-center space-x-4 mb-4">
       <ion-icon name="person-circle-outline" class="text-blue-500" slot="start"></ion-icon>
       <ion-label>Profil</ion-label>
@@ -38,6 +40,9 @@
       <ion-icon name="images-outline" class="text-indigo-500" slot="start"></ion-icon>
       <ion-label>Galerie de photos</ion-label>
     </ion-item>
-    <!-- Ajoutez d'autres liens vers les fonctionnalités de votre application -->
+    <ion-item routerLink="/logout" class="flex items-center space-x-4 mb-4">
+      <ion-icon name="log-out-outline" class="text-red-500" slot="start"></ion-icon>
+      <ion-label>Déconnexion</ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>
