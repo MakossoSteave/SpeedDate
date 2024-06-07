@@ -21,6 +21,11 @@ export class HomeComponent  implements OnInit {
   }
   match(){
     this.router.navigate(['home/match'])
-
+  }
+  searchProfil(){
+    this.router.navigate(['home/search'])
+  }
+  logout(){
+    this.router.navigate([''])
   }
 }

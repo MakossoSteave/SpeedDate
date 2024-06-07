@@ -7,6 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./profil.component.scss'],
 })
 export class ProfilComponent  implements OnInit {
+  photos: string[] = [
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300',
+    'https://via.placeholder.com/300'
+  ];
 
   constructor( private router : Router) { }
 
@@ -17,7 +23,6 @@ export class ProfilComponent  implements OnInit {
     console.log("profile")
   }
   logout(){
-    this.router.navigate(['home/profil'])
-    console.log("logout")
+    this.router.navigate([''])
   }
 }

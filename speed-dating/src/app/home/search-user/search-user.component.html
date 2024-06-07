@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recherche de profils</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="text-3xl font-bold mb-4 text-center">Recherche de profils</h1>
+  <p class="text-lg text-gray-600 mb-8 text-center">Trouvez des personnes à proximité ou correspondant à vos critères.</p>
+
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterProfiles()"></ion-searchbar>
+
+  <ion-list lines="none" class="mt-4">
+    <ion-item *ngFor="let profile of filteredProfiles" class="flex items-center space-x-4 mb-4 bg-white rounded-lg shadow-md p-4 hover:bg-gray-50 transition">
+      <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+        <img [src]="profile.picture" alt="{{ profile.name }}" class="w-full h-full object-cover">
+      </div>
+      <ion-label class="flex flex-col ml-4">
+        <span class="font-bold text-xl">{{ profile.name }} </span>
+        <span class="text-gray-600"> {{ profile.location }}</span>
+      </ion-label>
+      <ion-button (click)="viewProfile()" fill="clear" slot="end" class="ml-auto">
+        <ion-icon name="eye-outline" slot="icon-only" class="text-blue-500"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -8,6 +8,7 @@ import { HomeComponent } from '../home/home.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { MatchComponent } from './match/match.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 
 
@@ -29,11 +30,16 @@ const routes: Routes = [
         path: 'match',
         component: MatchComponent
     },
+    {
+        path: 'search',
+        component: SearchUserComponent
+    },
+    
 
 ];
 
 @NgModule({
-    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent,MatchComponent],
+    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent,MatchComponent,SearchUserComponent],
     imports: [
         IonicModule,
         CommonModule,
