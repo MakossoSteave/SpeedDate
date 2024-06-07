@@ -1,0 +1,7 @@
+{
+  "name": "SpeedDating",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

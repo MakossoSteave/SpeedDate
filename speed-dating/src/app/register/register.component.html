@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SpeedDating Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding flex items-center justify-center h-full">
+  <div class="text-center">
+    <img src="../../assets/icon/favicon.png" alt="Logo" class="w-24 h-24 mb-8">
+
+    <ion-card class="max-w-md">
+      <ion-card-header>
+        <ion-card-title>Create a new account</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="register()">
+          <ion-item lines="none" class="mb-4">
+            <ion-label position="floating">Username</ion-label>
+            <ion-input type="text" [(ngModel)]="username" name="username" required class="w-full"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="mb-4">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="email" name="email" required class="w-full"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="mb-4">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password" name="password" required class="w-full"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="mb-4">
+            <ion-label position="floating">Confirm Password</ion-label>
+            <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required class="w-full"></ion-input>
+          </ion-item>
+
+          <ion-button expand="block" type="submit" class="mb-4">Register</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <p class="text-center text-gray-600">Already have an account? <a (click)="goLogin()" class="text-blue-500">Login</a></p>
+  </div>
+</ion-content>
