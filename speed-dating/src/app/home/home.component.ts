@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -11,8 +12,11 @@ import { IonicModule } from '@ionic/angular';
 })
 export class HomeComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {}
 
+  redirectProfil(){
+    this.router.navigate(['home/profil'])
+  }
 }

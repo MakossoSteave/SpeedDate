@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Modifier le profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="saveProfile()">
+    <div class="flex flex-col items-center mb-6">
+      <div class="w-24 h-24 rounded-full overflow-hidden mb-4">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-full h-full object-cover">
+      </div>
+      <ion-button (click)="changeProfilePicture()">Changer la photo</ion-button>
+    </div>
+
+    <ion-item lines="none" class="mb-4">
+      <ion-label position="floating">Nom d'utilisateur</ion-label>
+      <ion-input [(ngModel)]="username" name="username" required class="w-full"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mb-4">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required class="w-full"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mb-4">
+      <ion-label position="floating">Téléphone</ion-label>
+      <ion-input type="tel" [(ngModel)]="phone" name="phone" required class="w-full"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mb-4">
+      <ion-label position="floating">Localisation</ion-label>
+      <ion-input [(ngModel)]="location" name="location" required class="w-full"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="mb-4">
+      <ion-label position="floating">Intérêts</ion-label>
+      <ion-input [(ngModel)]="interests" name="interests" required class="w-full"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="mt-4">Enregistrer</ion-button>
+    <ion-button expand="block" color="medium" class="mt-2" (click)="cancel()">Annuler</ion-button>
+  </form>
+</ion-content>
