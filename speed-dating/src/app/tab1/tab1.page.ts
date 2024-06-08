@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ServiceRegisterService } from '../register/service-register.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-tab1',
@@ -13,44 +15,51 @@ export class Tab1Page {
   password!: string;
   loginForm!: NgForm;
 
-  
-  user={
-    email:"steave1@live.fr",
-    password:"psw"
+
+  user = {
+    email: "steave1@live.fr",
+    password: "psw"
   }
-  constructor( private router : Router , private loginService: ServiceRegisterService) {}
-  login( loginForm: NgForm){
+  constructor(private router: Router, private loginService: ServiceRegisterService, private toastController: ToastController) { }
+
+  async presentErrorToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000, 
+      color: 'danger',
+      position: 'top'
+    });
+    toast.present();
+  }
+  login(loginForm: NgForm) {
     const email = this.email
     const password = this.password
 
-    const userValited ={
-      "email" :this.email,
-      "password":this.password
+    const userValited = {
+      "email": this.email,
+      "password": this.password
     }
-    if(this.email != undefined && this.password != undefined){
-          this.loginService.login(userValited).subscribe(
-            response => {
-            
-              if(response !=undefined){
-                this.router.navigate(['/home/home/'+response.username])
-              
-               // console.log('connexion réussie !', response.username);
-              }else{
-                console.log(" le mots de passe ou l'email est incorrect")
-              }
-            },
-            error => {
-              console.error('Erreur lors de la connection :', error);
-            }
-          );
-        
-    }else{
-      console.log("veuilliez insérez un nom d'utilisateur et un mots de passe ")
+    if (!this.email || !this.password) {
+      this.presentErrorToast('Veuillez remplir tous les champs.');
+      return;
     }
-  
-  }
+ 
+    this.loginService.login(userValited).subscribe(
+      response => {
 
-  redirectRegister(){
-    this.router.navigate(['/register'])
-  }
+        if (response != undefined) {
+          const myData = { param1: response.id, param2: response.email };
+          this.router.navigate(['/home/home/' +{ state: myData }])
+        } else {
+          console.log(" le mots de passe ou l'email est incorrect")
+        }
+      },
+      error => {
+        console.error('Erreur lors de la connection :', error);
+      }
+    );
+}
+redirectRegister(){
+  this.router.navigate(['/register'])
+}
 }

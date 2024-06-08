@@ -19,4 +19,8 @@ export class ServiceRegisterService {
     return this.http.post(this.apiUrl+"connection" ,data);
   }
 
+  getProfil(data:any):Observable<any>{
+    console.log(data)
+    return  this.http.post(this.apiUrl+"profil",data);
+  }
 }
