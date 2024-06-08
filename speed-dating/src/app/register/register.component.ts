@@ -48,10 +48,15 @@ export class RegisterComponent implements OnInit {
       if(password == confirmPassword){
         this.user = userValited
 
-      console.log(this.user)
-      this.registerService.Register(this.user).subscribe(
+      this.registerService.register(this.user).subscribe(
         response => {
-          console.log('Inscription réussie !', response);
+          if(response != undefined){
+            this.route.navigate(['/home/home/'+response.username])
+          }else{
+            console.log("une erreur s'est produit lors de votre inscription , l'email utilisé existe deja ")
+          }
+          
+
         },
         error => {
           console.error('Erreur lors de l\'inscription :', error);

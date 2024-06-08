@@ -14,7 +14,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
 
 const routes: Routes = [
     {
-        path: 'home',
+        path: 'home/:id',
         component: HomeComponent,
     },
 
