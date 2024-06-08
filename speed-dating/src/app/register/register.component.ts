@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ServiceRegisterService } from './service-register.service';
+import { user } from '../user.interface';
 
 @Component({
   selector: 'app-register',
@@ -16,29 +18,46 @@ export class RegisterComponent implements OnInit {
   password!: string;
   confirmPassword!: string;
   passwordMatchValidator: any;
-  constructor(private route: Router , private formBuilder: FormBuilder) { }
+
+  user!: user;
+
+  constructor(private route: Router , private formBuilder: FormBuilder , private registerService : ServiceRegisterService) { }
 
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      username: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', [Validators.required,]]
     }, {
       validator: this.passwordMatchValidator
     });
+  
    }
   register() {
     if (this.registerForm.valid) {
-      const email = this.registerForm.get('email')?.value;
       const password = this.registerForm.get('password')?.value;
       const confirmPassword = this.registerForm.get('confirmPassword')?.value;
-
+      
+      const userValited ={
+        "email" :this.registerForm.get('email')?.value,
+        "password":this.registerForm.get('password')?.value,
+        "username": this.registerForm.get('username')?.value
+      }
       if(password == confirmPassword){
-      console.log('Email:', email);
-      console.log('Password:', password);
-      console.log('Confirm Password:', confirmPassword);
-      this.route.navigate(['home/home'])
+        this.user = userValited
+
+      console.log(this.user)
+      this.registerService.Register(this.user).subscribe(
+        response => {
+          console.log('Inscription réussie !', response);
+        },
+        error => {
+          console.error('Erreur lors de l\'inscription :', error);
+        }
+      );
+     // this.route.navigate(['home/home'])
       }else{
         console.log("les deux mots de passe ne semble pas être les même")
       }
