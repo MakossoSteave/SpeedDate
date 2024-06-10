@@ -22,11 +22,11 @@ export class Tab1Page {
   }
   constructor(private router: Router, private loginService: ServiceRegisterService, private toastController: ToastController) { }
 
-  async presentErrorToast(message: string) {
+  async presentErrorToast(message: string , color:string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000, 
-      color: 'danger',
+      color: color,
       position: 'top'
     });
     toast.present();
@@ -40,7 +40,7 @@ export class Tab1Page {
       "password": this.password
     }
     if (!this.email || !this.password) {
-      this.presentErrorToast('Veuillez remplir tous les champs.');
+      this.presentErrorToast('Veuillez remplir tous les champs.', 'danger');
       return;
     }
  
@@ -48,13 +48,14 @@ export class Tab1Page {
       response => {
 
         if (response != undefined) {
-          const myData = { param1: response.id, param2: response.email };
-          this.router.navigate(['/home/home/' +{ state: myData }])
+          this.presentErrorToast("connection reussi",'succes');
+          this.router.navigate(['/home/home/' +response.id])
         } else {
-          console.log(" le mots de passe ou l'email est incorrect")
+          this.presentErrorToast("le mots de passe ou l'email est incorrect",'warning');
         }
       },
       error => {
+        
         console.error('Erreur lors de la connection :', error);
       }
     );
