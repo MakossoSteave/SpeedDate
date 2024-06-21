@@ -14,7 +14,6 @@ export class EditProfilComponent  implements OnInit {
   interests!: string;
   
   constructor(private router: Router) {
-    // Initialize the form fields with current profile data
     this.username = 'Current Username';
     this.email = 'user@example.com';
     this.phone = '0123456789';
@@ -22,7 +21,6 @@ export class EditProfilComponent  implements OnInit {
     this.interests = 'Music, Travel, Cooking';
   }
   saveProfile() {
-    // Add logic to save the profile data
     console.log('Profile saved:', {
       username: this.username,
       email: this.email,

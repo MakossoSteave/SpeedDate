@@ -30,11 +30,11 @@ export class HomeComponent  implements OnInit {
         }
 
       )
-      const prof ={
+      const testChangeTel ={
         "id":1,
         "number":"0746460513"
       }
-      this.profilService.updateTel(prof).subscribe(
+      this.profilService.updateTel(testChangeTel).subscribe(
         response =>{
           console.log(response)
         }

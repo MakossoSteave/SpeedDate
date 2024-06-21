@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ServiceRegisterService } from 'src/app/register/service-register.service';
 
 @Component({
   selector: 'app-profil',
@@ -15,11 +16,19 @@ export class ProfilComponent  implements OnInit {
     'https://via.placeholder.com/300'
   ];
   userProfil:any;
-  constructor( private router : Router , private cookieService : CookieService) { }
+  constructor( private router : Router , private cookieService : CookieService  , private registerService : ServiceRegisterService) { }
 
   ngOnInit() {
-    console.log("here")
     this.getUserProfilFromCookie();
+    const updateteltest  ={
+      "id":1,
+      "number": "0646460513"
+    }
+    this.registerService.updateTel(updateteltest).subscribe(
+      response =>{
+        console.log(response)
+      }
+    )
   }
 
   getUserProfilFromCookie(): void {
