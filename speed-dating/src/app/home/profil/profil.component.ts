@@ -37,6 +37,7 @@ export class ProfilComponent  implements OnInit {
     console.log("profile")
   }
   logout(){
+    this.cookieService.deleteAll()
     this.router.navigate([''])
   }
 }

@@ -30,13 +30,25 @@ export class HomeComponent  implements OnInit {
         }
 
       )
-      
+      const prof ={
+        "id":1,
+        "number":"0746460513"
+      }
+      this.profilService.updateTel(prof).subscribe(
+        response =>{
+          console.log(response)
+        }
+      )
+      console.log("de")
     }
+   
 
   }
   saveUserProfilToCookie(): void {
     const userProfilString = JSON.stringify(this.userProfil);
     this.cookieService.set('userProfilData', userProfilString);
+    console.log(this.cookieService.getAll())
+    console.log(this.userProfil)
   }
   redirectProfil(){
     this.router.navigate(['home/profil'])
@@ -47,7 +59,12 @@ export class HomeComponent  implements OnInit {
   searchProfil(){
     this.router.navigate(['home/search'])
   }
+  chat(){
+    this.router.navigate(['home/chat'])
+
+  }
   logout(){
+    this.cookieService.deleteAll()
     this.router.navigate([''])
   }
 }

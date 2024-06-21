@@ -9,6 +9,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { EditProfilComponent } from './edit-profil/edit-profil.component';
 import { MatchComponent } from './match/match.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { ChatComponent } from './chat/chat.component';
+import { EventManagementComponent } from './event-management/event-management.component';
 
 
 
@@ -23,6 +25,10 @@ const routes: Routes = [
         component: ProfilComponent
     },
     {
+        path: 'chat',
+        component: ChatComponent
+    },
+    {
         path: 'edit',
         component: EditProfilComponent
     },
@@ -34,12 +40,16 @@ const routes: Routes = [
         path: 'search',
         component: SearchUserComponent
     },
+    {
+        path: 'event',
+        component: EventManagementComponent
+    },
     
 
 ];
 
 @NgModule({
-    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent,MatchComponent,SearchUserComponent],
+    declarations: [HomeComponent , ProfilComponent ,EditProfilComponent,MatchComponent,SearchUserComponent,ChatComponent,EventManagementComponent],
     imports: [
         IonicModule,
         CommonModule,

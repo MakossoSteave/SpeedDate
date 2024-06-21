@@ -9,8 +9,7 @@ import { ProfilComponent } from './profil.component';
     IonicModule,
     CommonModule,
     FormsModule,
-    ProfilComponent
   ],
-  declarations: [ProfilComponent]
+  declarations: []
 })
 export class ProfilModule {}

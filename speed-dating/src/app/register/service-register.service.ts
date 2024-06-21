@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ServiceRegisterService {
   private apiUrl = '/api/api/home/';
+  private apiUrltel = '/api/api/profil/';
 
   constructor(private http: HttpClient) {}
 
@@ -22,5 +23,9 @@ export class ServiceRegisterService {
   getProfil(data:any):Observable<any>{
     console.log(data)
     return  this.http.post(this.apiUrl+"profil",data);
+  }
+  updateTel(data:any):Observable<any>{
+    console.log(data)
+    return this.http.post(this.apiUrltel+"tel",data)
   }
 }

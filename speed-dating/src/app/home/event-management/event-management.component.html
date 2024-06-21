@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Gestion des événements
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addEvent()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let event of events">
+      <ion-label>
+        <h2>{{ event.title }}</h2>
+        <p>Date: {{ event.date | date:'short' }}</p>
+        <p>Lieu: {{ event.location }}</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="editEvent(event)">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" color="danger" (click)="deleteEvent(event)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
